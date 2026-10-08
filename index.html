@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Compass</title>
+    <meta name="description" content="Browser Compass">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111">
+    <script id="theme-watcher">
+      ((_1, _2, _3) => {
+        let
+          a,
+          c,
+          x = 'auto',
+          y = 'light',
+          z = 'dark',
+          k = 'theme',
+          d = _2.documentElement,
+          h = d.classList,
+          m = () => _1.matchMedia('(prefers-color-scheme: dark)'),
+          t = m().matches ? z : y,
+          g = () => _1.localStorage.getItem(k),
+          s = v => _1.localStorage.setItem(k, v),
+          w = (c, n) => (h.remove(c), h.add(n)),
+          l = g() || x,
+          p = v => d.style.colorScheme = !/light|dark/.test(v) ? [y, z].join(' ') : v
+          
+        _1[_3] = c = v => ((a = v === x ? t : v), (v === z ? w(y, z) : w(z, y)), s(v), p(v)),
+        
+        c(l) && m().addEventListener('change', v => l === x && s(l))
+      })(window, document, '__switchTheme')
+    </script>
+  </head>
+  <body>
+    <div class="content need-script">
+      <h1>
+        <span id="direction"></span> <span id="heading"></span>°
+      </h1>
+      <div id="compass"></div>
+    </div>
+    <noscript>
+      <p>This site require JavaScript, please enable and reload this page.</p>
+      <style>
+        .need-script {
+          display: none !important;
+        }
+      </style>
+    </noscript>
+  </body>
+</html>

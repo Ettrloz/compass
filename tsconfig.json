@@ -1,0 +1,8 @@
+{
+  "extends": "@ettrloz/project-config/tsconfig/tsconfig.javascript-check.json",
+  "compilerOptions": {
+    "incremental": true,
+    "rootDir": "src"
+  },
+  "include": ["definitions.d.ts", "src"]
+}
